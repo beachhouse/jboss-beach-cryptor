@@ -47,8 +47,18 @@
       </dependency>
    </dependencies>
 
+   <dependencyManagement>
+      <dependencies>
+         <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>jboss-beach-cryptor</artifactId>
+            <version>${project.version}</version>
+         </dependency>
+      </dependencies>
+   </dependencyManagement>
+
    <modules>
-      <!-- module>askpass</module -->
+      <module>askpass</module>
       <module>cryptor</module>
       <!-- module>ejb</module -->
    </modules>

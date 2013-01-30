@@ -46,10 +46,12 @@ public class Cryptor {
     private char[] defaultPassword;
 
     private static class DefaultPasswordProvider implements PasswordProvider {
+        private PasswordProvider fallback = new ServicePasswordProvider();
+
         @Override
         public char[] providePassword(final Cryptor cryptor) {
             if (cryptor.defaultPassword == null)
-                throw new IllegalStateException("No password has been set");
+                return fallback.providePassword(cryptor);
             return cryptor.defaultPassword;
         }
     };
@@ -85,6 +87,10 @@ public class Cryptor {
      */
     public void setPassword(final char[] password) {
         this.defaultPassword = password.clone();
+    }
+
+    public void setPasswordProvider(final PasswordProvider provider) {
+        this.passwordProvider = provider;
     }
 
     private final void verifyInitialized() {

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+   <parent>
+      <groupId>org.jboss.beach.cryptor</groupId>
+      <artifactId>jboss-beach-cryptor-parent</artifactId>
+      <version>0.1.0-SNAPSHOT</version>
+   </parent>
+
+   <modelVersion>4.0.0</modelVersion>
+
+   <artifactId>jboss-beach-cryptor-askpass</artifactId>
+
+   <packaging>jar</packaging>
+
+   <name>JBoss Beach Cryptor Askpass Integration</name>
+
+   <build>
+      <plugins>
+         <plugin>
+            <artifactId>maven-surefire-plugin</artifactId>
+            <configuration>
+               <additionalClasspathElements>
+                  <additionalClasspathElement>${project.build.testSourceDirectory}/../bin</additionalClasspathElement>
+               </additionalClasspathElements>
+            </configuration>
+         </plugin>
+      </plugins>
+   </build>
+
+   <dependencies>
+      <dependency>
+         <groupId>${project.groupId}</groupId>
+         <artifactId>jboss-beach-cryptor</artifactId>
+      </dependency>
+      <dependency>
+         <groupId>org.jboss.beach</groupId>
+         <artifactId>jboss-beach-askpass</artifactId>
+         <version>[0,1)</version>
+      </dependency>
+   </dependencies>
+</project>
