@@ -41,4 +41,8 @@ public class AskpassPasswordProvider implements PasswordProvider {
             throw new RuntimeException(e);
         }
     }
+
+    public void setPrompt(final String prompt) {
+        this.prompt = prompt;
+    }
 }
