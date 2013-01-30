@@ -25,11 +25,41 @@
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/ejb-jar_3_1.xsd"
          version="3.1">
     <enterprise-beans>
+        <!-- set the prompt -->
+        <session>
+            <ejb-name>AskpassPasswordProvider</ejb-name>
+            <business-local>org.jboss.beach.cryptor.spi.PasswordProvider</business-local>
+            <ejb-class>org.jboss.beach.cryptor.askpass.AskpassPasswordProvider</ejb-class>
+            <session-type>Singleton</session-type>
+            <concurrent-method>
+                <method>
+                    <method-name>providePassword</method-name>
+                </method>
+                <lock>Read</lock>
+            </concurrent-method>
+            <env-entry>
+                <env-entry-name>prompt</env-entry-name>
+                <!-- here is the actual prompt -->
+                <env-entry-value>Enter passphrase for Cryptor Servlet</env-entry-value>
+                <injection-target>
+                    <injection-target-class>org.jboss.beach.cryptor.askpass.AskpassPasswordProvider</injection-target-class>
+                    <injection-target-name>prompt</injection-target-name>
+                </injection-target>
+            </env-entry>
+        </session>
         <session>
             <ejb-name>Cryptor</ejb-name>
             <local-bean/>
             <ejb-class>org.jboss.beach.cryptor.Cryptor</ejb-class>
             <session-type>Stateless</session-type>
+            <!-- use the prompt -->
+            <ejb-local-ref>
+                <ejb-ref-name>AskpassPasswordProvider</ejb-ref-name>
+                <injection-target>
+                    <injection-target-class>org.jboss.beach.cryptor.Cryptor</injection-target-class>
+                    <injection-target-name>passwordProvider</injection-target-name>
+                </injection-target>
+            </ejb-local-ref>
             <post-construct>
                 <lifecycle-callback-method>init</lifecycle-callback-method>
             </post-construct>
