@@ -35,6 +35,11 @@
         </run-as>
     </servlet>
 
+    <servlet>
+        <servlet-name>NotAllowedServlet</servlet-name>
+        <servlet-class>org.jboss.beach.cryptor.web.CryptorServlet</servlet-class>
+    </servlet>
+
     <servlet-mapping>
         <servlet-name>CryptorServlet</servlet-name>
         <url-pattern>/decrypt</url-pattern>
@@ -43,6 +48,11 @@
     <servlet-mapping>
         <servlet-name>CryptorServlet</servlet-name>
         <url-pattern>/encrypt</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>NotAllowedServlet</servlet-name>
+        <url-pattern>/notallowed</url-pattern>
     </servlet-mapping>
 
 </web-app>
