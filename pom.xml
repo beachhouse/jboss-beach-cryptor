@@ -29,6 +29,12 @@
                <target>1.6</target>
             </configuration>
          </plugin>
+         <plugin>
+            <artifactId>maven-release-plugin</artifactId>
+            <configuration>
+               <autoVersionSubmodules>true</autoVersionSubmodules>
+            </configuration>
+         </plugin>
       </plugins>
    </build>
 
@@ -67,4 +73,10 @@
       <module>cryptor</module>
       <module>web</module>
    </modules>
+
+   <scm>
+      <connection>scm:git:https://github.com/beachhouse/jboss-beach-cryptor.git</connection>
+      <developerConnection>scm:git:git@github.com:beachhouse/jboss-beach-cryptor.git</developerConnection>
+      <url>https://github.com/beachhouse/jboss-beach-cryptor</url>
+   </scm>
 </project>
