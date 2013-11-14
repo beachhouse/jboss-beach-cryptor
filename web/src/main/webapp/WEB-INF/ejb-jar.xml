@@ -73,5 +73,13 @@
                 <method-name>decrypt</method-name>
             </method>
         </method-permission>
+        <!-- In WildFly 8 anonymous access must be explicit -->
+        <method-permission>
+            <unchecked/>
+            <method>
+                <ejb-name>Cryptor</ejb-name>
+                <method-name>encrypt</method-name>
+            </method>
+        </method-permission>
     </assembly-descriptor>
 </ejb-jar>
